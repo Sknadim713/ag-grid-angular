@@ -1,0 +1,68 @@
+{
+  "clients": [
+    {
+      "id": 1,
+      "gst": "GST001",
+      "client": "Mittal",
+      "code": "001",
+      "country": "India",
+      "address": "123 Main Street",
+      "state": "Maharashtra",
+      "city": "Mumbai",
+      "email": "Mittal@example.com",
+      "panno": "ABCDE1234F",
+      "pincode":5545456,
+      "mobile": 1234567890,
+      "currency": "INR",
+      "latitude": "19.0760",
+      "cname": "John Doe",
+      "cmobile": "9876543210",
+      "cemail": "john.doe@example.com",
+      "department": "Sales",
+      "designation": "Manager"
+    },
+    {
+      "id": 2,
+      "gst": "GST002",
+      "client": "Smith",
+      "code": "002",
+      "country": "United States",
+      "address": "456 Oak Avenue",
+      "state": "California",
+      "city": "Los Angeles",
+      "email": "smith@example.com",
+      "pincode":554545,
+      "panno": "FGHIJ5678K",
+      "mobile": 9876543210,
+      "currency": "USD",
+      "latitude": "34.0522",
+      "cname": "Jane Doe",
+      "cmobile": "1234567890",
+      "cemail": "jane.doe@example.com",
+      "department": "Marketing",
+      "designation": "Director"
+    },
+    {
+      "id": 3,
+      "gst": "GST003",
+      "client": "Gonzalez",
+      "code": "003",
+      "country": "Mexico",
+      "address": "789 Elm Street",
+      "state": "Jalisco",
+      "city": "Guadalajara",
+      "email": "gonzalez@example.com",
+      "panno": "LMNOP9012Q",
+      "pincode":854545,
+      "mobile": 1234567890,
+      "currency": "MXN",
+      "latitude": "20.6597",
+      "cname": "Carlos Sanchez",
+      "cmobile": "9876543210",
+      "cemail": "carlos.sanchez@example.com",
+      "department": "Finance",
+      "designation": "Manager"
+    }
+  ]
+}
+

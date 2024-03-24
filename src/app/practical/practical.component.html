@@ -1,0 +1,457 @@
+<div class="card">
+    <form action="" [formGroup]="Clientform">
+        <div class="card-header">
+            <h6 class="p-2"> <b>Party Bill Details</b></h6>
+
+        </div>
+        <div class="p-4">
+            <div class="container-fluid p-0 m-0">
+                <div class="col-12 p-1">
+
+                    <div class="row mb-3">
+                        <div class="col-md-3">
+                            <label for="gst" class="form-label">GST NO:</label>
+                            <div class="input-group input-group-sm">
+                                <input type="text" class="form-control" placeholder="Enter Gst No" id="gst"
+                                    maxlength="15" minlength="15" formControlName="gst"
+                                    [class.is-invalid]="f['gst'].invalid && (f['gst'].dirty || f['gst'].touched)">
+                                <span class="input-group-text  text-white"
+                                    [class.bg-success]="f['gst'].value && f['gst'].value.length === 15"
+                                    [class.bg-secondary]="!f['gst'].value || f['gst'].value.length !== 15"
+                                    id="inputGroup-sizing-sm"><i class="fa fa-check" aria-hidden="true"></i></span>
+                                <div *ngIf="f['gst'].invalid && (f['gst'].dirty || f['gst'].touched)"
+                                    class="invalid-feedback">
+                                    <div *ngIf="f['gst'].errors?.['required']">
+                                        GST no is required
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- <div class="input-group input-group-sm mb-3">
+                                
+                                <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
+                                <span class="input-group-text" id="inputGroup-sizing-sm">Small</span>
+                              </div> -->
+                        </div>
+                        <div class="col-md-3">
+                            <label for="pan" class="form-label">Pan no:</label>
+                            <div class="input-group input-group-sm">
+                                <input type="text" class="form-control" id="pan" placeholder="Enter PAN no"
+                                    formControlName="panno"
+                                    [class.is-invalid]="f['panno'].invalid && (f['panno'].dirty || f['panno'].touched)">
+                                <div *ngIf="f['panno'].invalid && (f['panno'].dirty || f['panno'].touched)"
+                                    class="invalid-feedback">
+                                    <div *ngIf="f['panno'].errors?.['required']">
+                                        PAN no is required
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <label for="code" class="form-label">Code:</label>
+                            <div class="input-group input-group-sm">
+                                <input type="number" class="form-control custom-number-input" id="code"
+                                    placeholder="Enter code" formControlName="code"
+                                    [class.is-invalid]="f['code'].invalid && (f['code'].dirty || f['code'].touched)">
+                                <div *ngIf="f['code'].invalid && (f['code'].dirty || f['code'].touched)"
+                                    class="invalid-feedback">
+                                    <div *ngIf="f['code'].errors?.['required']">
+                                        code no is required
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <label for="name" class="form-label">Name:</label>
+                            <div class="input-group input-group-sm">
+                                <input type="text" class="form-control" id="name" placeholder="Enter name"
+                                    formControlName="client"
+                                    [class.is-invalid]="f['client'].invalid && (f['client'].dirty || f['client'].touched)">
+                                <div *ngIf="f['client'].invalid && (f['client'].dirty || f['client'].touched)"
+                                    class="invalid-feedback">
+                                    <div *ngIf="f['client'].errors?.['required']">
+                                        name is required
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row mb-3">
+
+
+                        <div class="col-md-3">
+                            <label for="Pincode" class="form-label">Pincode:</label>
+                            <div class="input-group input-group-sm">
+                                <input type="text" class="form-control" id="Pincode" placeholder="Enter pincode"
+                                    formControlName="pincode"
+                                    [class.is-invalid]="f['pincode'].invalid && (f['pincode'].dirty || f['pincode'].touched)">
+                                <div *ngIf="f['code'].invalid && (f['code'].dirty || f['code'].touched)"
+                                    class="invalid-feedback">
+                                    <div *ngIf="f['code'].errors?.['required']">
+                                        code no is required
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <label for="address" class="form-label">Address:</label>
+                            <div class="input-group input-group-sm">
+                                <textarea class="form-control" id="address" rows="1" placeholder="Enter Address"
+                                    formControlName="address"
+                                    [class.is-invalid]="f['address'].invalid && (f['address'].dirty || f['address'].touched)"></textarea>
+                                <div *ngIf="f['address'].invalid && (f['address'].dirty || f['address'].touched)"
+                                    class="invalid-feedback">
+                                    <div *ngIf="f['address'].errors?.['required']">
+                                        Address no is required
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row mb-3">
+                        <div class="col-md-3">
+                            <label for="country" class="form-label">
+                                Country:
+                            </label>
+                            <select class="form-select form-select-sm" id="country" formControlName="country"
+                                [class.is-invalid]="f['country'].invalid && (f['country'].dirty || f['country'].touched)">
+                                <option [selected]="true" disabled>Select country</option>
+                                <option value="india">india</option>
+                                <option value="usa">USA</option>
+                                <option value="china">China</option>
+                            </select>
+                            <div *ngIf="f['country'].invalid && (f['country'].dirty || f['country'].touched)"
+                                class="invalid-feedback">
+                                <div *ngIf="f['country'].errors?.['required']">
+                                    Country is required
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <label for="State" class="form-label">
+                                State:
+                            </label>
+                            <select class="form-select form-select-sm" id="country" formControlName="state"
+                                [class.is-invalid]="f['state'].invalid && (f['state'].dirty || f['state'].touched)">
+                                <option [selected]="true" disabled>Select state</option>
+                                <option value="Gujrat">Gujrat </option>
+                                <option value="Maharashtra">Maharashtra</option>
+                                <option value="Assam">Assam</option>
+                                <option value="Bihar">Bihar</option>
+                                <option value="Chhattisgarh">Chhattisgarh</option>
+                            </select>
+
+                            <div *ngIf="f['state'].invalid && (f['state'].dirty || f['state'].touched)"
+                                class="invalid-feedback">
+                                <div *ngIf="f['state'].errors?.['required']">
+                                    state is required
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <label for="city" class="form-label">
+                                City:
+                            </label>
+                            <select class="form-select form-select-sm" id="country" formControlName="city"
+                                [class.is-invalid]="f['city'].invalid && (f['city'].dirty || f['city'].touched)">
+                                <option [selected]="true" disabled>Select city</option>
+                                <option value="Ahmedabad">Ahmedabad</option>
+                                <option value="Surat">Surat</option>
+                                <option value="Vadodara">Vadodara</option>
+                                <option value="Mumbai">Mumbai</option>
+                                <option value="Pune">Pune</option>
+                            </select>
+
+                            <div *ngIf="f['city'].invalid && (f['city'].dirty || f['city'].touched)"
+                                class="invalid-feedback">
+                                <div *ngIf="f['city'].errors?.['required']">
+                                    city is required
+                                </div>
+                            </div>
+                        </div>
+
+
+
+                        <div class="col-md-3">
+                            <label for="mobile" class="form-label">Mobile No:</label>
+                            <div class="input-group input-group-sm">
+                                <input type="number" class="form-control custom-number-input"
+                                    placeholder="Enter  mobile no" id="mobile" maxlength="10" size="10"
+                                    formControlName="mobile"
+                                    [class.is-invalid]="f['mobile'].invalid && (f['mobile'].dirty || f['mobile'].touched)">
+                                <div *ngIf="f['mobile'].invalid && (f['mobile'].dirty || f['mobile'].touched)"
+                                    class="invalid-feedback">
+                                    <div *ngIf="f['mobile'].errors?.['required']">
+                                        mobile no is required
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row mb-3">
+
+                        <div class="col-md-3">
+                            <label for="email" class="form-label">Email:</label>
+                            <div class="input-group input-group-sm">
+                                <input type="email" class="form-control" id="email" placeholder="Enter Email"
+                                    formControlName="email"
+                                    [class.is-invalid]="f['email'].invalid && (f['email'].dirty || f['email'].touched)">
+                                <div *ngIf="f['email'].invalid && (f['email'].dirty || f['email'].touched)"
+                                    class="invalid-feedback">
+                                    <div *ngIf="f['email'].errors?.['required']">
+                                        email is required
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <label for="latitude" class="form-label">Latitude:</label>
+                            <div class="input-group input-group-sm">
+                                <input type="text" class="form-control" id="latitude" formControlName="latitude"
+                                    placeholder="Enter latitude">
+                            </div>
+                        </div>
+
+                        <div class="col-md-3">
+                            <label for="currency" class="form-label">Currency:</label>
+                            <select class="form-select form-select-sm" id="currency" formControlName="currency"
+                                [class.is-invalid]="f['currency'].invalid && (f['currency'].dirty || f['currency'].touched)">
+                                <option [selected]="true" disabled>Select Currency</option>
+                                <option value="INR">Indian Rupee (INR)</option>
+                                <option value="USD">US Dollar (USD)</option>
+                                <option value="EUR">Euro (EUR)</option>
+                                <option value="GBP">British Pound (GBP)</option>
+                                <option value="JPY">Japanese Yen (JPY)</option>
+
+                            </select>
+
+                            <div *ngIf="f['currency'].invalid && (f['currency'].dirty || f['currency'].touched)"
+                                class="invalid-feedback">
+                                <div *ngIf="f['currency'].errors?.['required']">
+                                    currency is required
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <label for="Attachment" class="form-label">Attachment:</label>
+
+                            <label for="Attachment" class="form-label"></label>
+                            <input class="form-control form-control-sm" type="file" formControlName="file"
+                                id="Attachment" (change)="onFileAttach($event)">
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <hr>
+            <h5 class="text-center">Contact Person Details</h5>
+            <hr>
+            <div class="container-fluid  ">
+                <div class="col-12  ">
+                    <div class="row mb-3 d-flex justify-content-center ">
+                        <div class="col-md-2">
+                            <label for="name" class="form-label">Name:</label>
+                            <div class="input-group input-group-sm">
+                                <input type="text" class="form-control" id="name" placeholder="Enter person name"
+                                    formControlName="cname"
+                                    [class.is-invalid]="f['cname'].invalid && (f['cname'].dirty || f['cname'].touched)">
+                                <div *ngIf="f['cname'].invalid && (f['cname'].dirty || f['cname'].touched)"
+                                    class="invalid-feedback">
+                                    <div *ngIf="f['cname'].errors?.['required']">
+                                        name is required
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+
+                        <div class="col-md-2">
+                            <label for="mobile" class="form-label">Mobile:</label>
+                            <div class="input-group input-group-sm">
+                                <input type="number" class="form-control custom-number-input" id="mobile"
+                                    placeholder="Enter no" maxlength="10" size="10" formControlName="cmobile"
+                                    [class.is-invalid]="f['cmobile'].invalid && (f['cmobile'].dirty || f['cmobile'].touched)">
+                                <div *ngIf="f['cmobile'].invalid && (f['cmobile'].dirty || f['cmobile'].touched)"
+                                    class="invalid-feedback">
+                                    <div *ngIf="f['cmobile'].errors?.['required']">
+                                        mobile no is required
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-2">
+                            <label for="Email" class="form-label">Email:</label>
+                            <div class="input-group input-group-sm">
+                                <input type="email" class="form-control" placeholder="Enter email" id="Email"
+                                    formControlName="cemail">
+                            </div>
+                        </div>
+                        <div class="col-md-2">
+                            <label for="Department" class="form-label">Department:</label>
+                            <div class="input-group input-group-sm">
+                                <input type="text" class="form-control" id="Department"
+                                    placeholder="Enter department name" formControlName="department">
+                            </div>
+                        </div>
+                        <div class="col-md-2">
+                            <label for="Designation" class="form-label">Designation:</label>
+                            <div class="input-group input-group-sm">
+                                <input type="text" class="form-control" id="Designation" placeholder="Enter Designation"
+                                    formControlName="designation">
+                            </div>
+                        </div>
+                        <div class="col-md-2 d-flex align-items-center">
+                            <div class="buttons mt-4 ">
+                                <input type="hidden" formControlName="id">
+                                <button type="button" class="btn btn-primary" (click)="OnSubmit()">
+                                    <i class="fas fa-plus"></i> Add
+                                </button>
+                                <button type="button" class="btn btn-secondary ms-2" (click)="CancelForm()">
+                                    <i class="fas fa-times"></i> Cancel
+                                </button>
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+
+    </form>
+
+    <!-- Table -->
+    <div class="container-fluid p-0 m-0">
+        <div class="row">
+            <div class="col-12">
+                <div class="search bg-light p-2 d-flex w-100">
+                    <label>Filter:</label> 
+                    <input class="form-control form-control-sm w-25 ms-3" 
+                           type="text" 
+                           [(ngModel)]="city" 
+                           (ngModelChange)="onCityChange($event)" 
+                           placeholder="search city">
+                </div>
+            </div>
+            
+            
+
+            <div class="col-sm-12 col-md-12" style="padding: 0; margin: 0;">
+                <div class="p-0 m-0">
+                    <div style="height: 300px;">
+                        <ag-grid-angular style="width: 100%; height: 100%;" class="ag-theme-alpine"
+                            [columnDefs]="colDefinitions" [defaultColDef]="defaultColDefs" [rowData]="combinedData"
+                            [animateRows]="true"></ag-grid-angular>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Table -->
+    <div class="container-fluid p-0 m-0">
+        <div class="row">
+          <div class="col-12">
+  <!-- Modal -->
+  <div class="modal fade " id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog  modal-lg ">
+        <div class="modal-content bg-light">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Client Details</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" (click)="close()"></button>
+            </div>
+            <div class="modal-body">
+                <div class="row g-2">
+                    <div class="col-2 my-3">
+                        Gst no:
+                    </div>
+                    <div class="col-4 my-3">
+                        {{ selectedClient?.gst }}
+                    </div>
+                    <div class="col-2 my-3">
+                        Client Name:
+                    </div>
+                    <div class="col-4 my-3">
+                        {{ selectedClient?.client }}
+                    </div>
+                    <div class="col-2 my-3">
+                        Code:
+                    </div>
+                    <div class="col-4 my-3">
+                        {{ selectedClient?.code }}
+                    </div>
+                    <div class="col-2 my-3">
+                        Country:
+                    </div>
+                    <div class="col-4 my-3">
+                        {{ selectedClient?.country }}
+                    </div>
+                    <div class="col-2 my-3">
+                        Address:
+                    </div>
+                    <div class="col-4 my-3">
+                        {{ selectedClient?.address }}
+                    </div>
+                    <div class="col-2 my-3">
+                        State:
+                    </div>
+                    <div class="col-4 my-3">
+                        {{ selectedClient?.state }}
+                    </div>
+                    <div class="col-2 my-3">
+                        City:
+                    </div>
+                    <div class="col-4 my-3">
+                        {{ selectedClient?.city }}
+                    </div>
+                    <div class="col-2 my-3">
+                        Email:
+                    </div>
+                    <div class="col-4 my-3">
+                        {{ selectedClient?.email }}
+                    </div>
+                    <div class="col-2 my-3">
+                        Pan no:
+                    </div>
+                    <div class="col-4 my-3">
+                        {{ selectedClient?.panno }}
+                    </div>
+                    <div class="col-2 my-3">
+                        Mobile:
+                    </div>
+                    <div class="col-4 my-3">
+                        {{ selectedClient?.mobile }}
+                    </div>
+                    <div class="col-2 my-3">
+                        Pincode  no:
+                    </div>
+                    <div class="col-4 my-3">
+                        {{ selectedClient?.pincode }}
+                    </div>
+                    <div class="col-2 my-3">
+                        Currency  :
+                    </div>
+                    <div class="col-4 my-3">
+                        {{ selectedClient?.pincode }}
+                    </div>
+                </div>
+               
+            </div>
+         
+        </div>
+    </div>
+</div>
+
+
+
+
+          </div>
+
+        </div>
+    </div>
+
+
+
+</div>

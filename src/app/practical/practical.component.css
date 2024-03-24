@@ -1,0 +1,21 @@
+/* Style header row */
+.ag-header {
+    background-color: #f0f0f0;
+    color: #333;
+    font-weight: bold;
+    border-bottom: 1px solid #ccc;
+}
+
+.label {
+    font-size: smaller !important;
+}
+
+.custom-number-input::-webkit-inner-spin-button,
+.custom-number-input::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+.custom-number-input {
+    -moz-appearance: textfield;
+}
