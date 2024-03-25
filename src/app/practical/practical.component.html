@@ -237,9 +237,8 @@
                         <div class="col-md-3">
                             <label for="Attachment" class="form-label">Attachment:</label>
 
-                            <label for="Attachment" class="form-label"></label>
-                            <input class="form-control form-control-sm" type="file" formControlName="file"
-                                id="Attachment" (change)="onFileAttach($event)">
+                            <input type="file" class="form-control form-control-sm" formControlName="file" id="Attachment" (change)="onFileAttach($event)">
+
 
                         </div>
                     </div>
@@ -330,7 +329,7 @@
                 <div class="search bg-light p-2 d-flex w-100">
                     <label>Filter:</label> 
                     <input class="form-control form-control-sm w-25 ms-3" 
-                           type="text" 
+                           type="search" 
                            [(ngModel)]="city" 
                            (ngModelChange)="onCityChange($event)" 
                            placeholder="search city">

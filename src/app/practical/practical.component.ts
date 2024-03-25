@@ -42,7 +42,7 @@ export class PracticalComponent implements OnInit {
 
   }
   ngOnInit(): void {
-    this.getdata();
+    this.GetData();
     this.ClientSubject = new BehaviorSubject<any[]>(this.Client);
   }
 
@@ -123,21 +123,29 @@ export class PracticalComponent implements OnInit {
 
   }
   onDelete(data: any) {
-    let idToDelete = data.id;
-    alert(idToDelete)
-
-    const indexToDelete = this.Client.findIndex((item: { id: any; }) => item.id === idToDelete);
-    if (indexToDelete !== -1) {
-      this.Client.splice(indexToDelete, 1);
-      this.ClientSubject.next([...this.Client]);
+    const idToDelete = data.id;
+    // alert(idToDelete);
+    let deleted = false;
+    const indexInClient = this.Client.findIndex((item: { id: any; }) => item.id === idToDelete);
+    if (indexInClient !== -1) {
+      this.Client.splice(indexInClient, 1);
+      deleted = true;
+    }
+    const indexInArray = this.array.findIndex((item: { id: any; }) => item.id === idToDelete);
+    if (indexInArray !== -1) {
+      this.array.splice(indexInArray, 1);
+      deleted = true;
+    }
+    if (deleted) {
+      this.ClientSubject.next([...this.Client, ...this.array]);
       this.cdr.detectChanges();
-
-      console.log(" deleted.");
+      console.log(idToDelete, "deleted.");
     } else {
-      console.log(idToDelete);
-      console.error("not deleted.");
+      console.error(idToDelete, "not found.");
     }
   }
+
+
 
 
 
@@ -148,8 +156,8 @@ export class PracticalComponent implements OnInit {
     this.cdr.detectChanges()
     const modalElement = document.getElementById('exampleModal');
     if (modalElement) {
-      modalElement.classList.add('show'); // Ensure the modal is shown
-      modalElement.style.display = 'block'; // Ensure the modal is visible
+      modalElement.classList.add('show');
+      modalElement.style.display = 'block';
     }
   }
 
@@ -158,7 +166,7 @@ export class PracticalComponent implements OnInit {
     this.selectedClient = '';
     const modalElement = document.getElementById('exampleModal');
     if (modalElement) {
-      modalElement.style.display = 'none'; // Hide the modal
+      modalElement.style.display = 'none';
     }
   }
 
@@ -208,7 +216,7 @@ export class PracticalComponent implements OnInit {
     this.files = event.target.files[0];
   }
 
-  getdata() {
+  GetData() {
     this.Client = ClientData.clients;
     console.log(this.Client);
   }
@@ -279,7 +287,7 @@ export class PracticalComponent implements OnInit {
 
   onCityChange(newValue: string) {
     if (!newValue.trim()) {
-      this.getdata();
+      this.GetData();
     } else {
       this.applyCityFilter();
     }
@@ -297,31 +305,47 @@ export class PracticalComponent implements OnInit {
 }
 
 // OnSubmit() {
+//   if (this.Clientform.valid) {
+//     const id = this.Clientform.get('id')?.value;
+//     if (this.isIdAvailable(id)) {
+//       this.UpdateById(id);
+//     } else {
+//       const newId = this.createid();
+//       this.Clientform.patchValue({ id: newId });
 
-//   const formData = new FormData();
-//   console.log('Form Values:', this.Clientform.value);
-//   formData.append('gst', this.Clientform.value.gst);
-//   formData.append('panno', this.Clientform.value.panno);
-//   formData.append('code', this.Clientform.value.code);
-//   formData.append('name', this.Clientform.value.name);
-//   formData.append('pincode', this.Clientform.value.pincode);
-//   formData.append('address', this.Clientform.value.address);
-//   formData.append('country', this.Clientform.value.country);
-//   formData.append('state', this.Clientform.value.state);
-//   formData.append('city', this.Clientform.value.city);
-//   formData.append('mobile', this.Clientform.value.mobile);
-//   formData.append('email', this.Clientform.value.email);
-//   formData.append('currency', this.Clientform.value.currency);
-//   formData.append('latitude', this.Clientform.value.latitude);
-//   formData.append('cname', this.Clientform.value.cname);
-//   formData.append('cmobile', this.Clientform.value.cmobile);
-//   formData.append('department', this.Clientform.value.department);
-//   formData.append('designation', this.Clientform.value.designation);
-//   formData.append('id', this.Clientform.value.id);
-//   formData.append('file', this.files);
-//   console.log('FormData:', formData);
-//   debugger
-//   this.array.push(formData);
-//   this.cdr.detectChanges();
+//       const formData = new FormData();
+//       formData.append('gst', this.Clientform.value.gst);
+//       formData.append('panno', this.Clientform.value.panno);
+//       formData.append('code', this.Clientform.value.code);
+//       formData.append('name', this.Clientform.value.name);
+//       formData.append('pincode', this.Clientform.value.pincode);
+//       formData.append('address', this.Clientform.value.address);
+//       formData.append('country', this.Clientform.value.country);
+//       formData.append('state', this.Clientform.value.state);
+//       formData.append('city', this.Clientform.value.city);
+//       formData.append('mobile', this.Clientform.value.mobile);
+//       formData.append('email', this.Clientform.value.email);
+//       formData.append('currency', this.Clientform.value.currency);
+//       formData.append('latitude', this.Clientform.value.latitude);
+//       formData.append('cname', this.Clientform.value.cname);
+//       formData.append('cmobile', this.Clientform.value.cmobile);
+//       formData.append('department', this.Clientform.value.department);
+//       formData.append('designation', this.Clientform.value.designation);
+//       formData.append('id', this.Clientform.value.id);
 
+//       // Append each file separately
+//       if (this.files && this.files.length > 0) {
+//         for (let i = 0; i < this.files.length; i++) {
+//           formData.append('file', this.files[i]);
+//         }
+//       }
+
+//       this.array.push(formData);
+//       console.log(this.array);
+//       this.Clientform.reset();
+//     }
+//   } else {
+//     this.Clientform.markAllAsTouched();
+//    
+//   }
 // }
