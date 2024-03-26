@@ -177,9 +177,11 @@
                             <label for="mobile" class="form-label">Mobile No:</label>
                             <div class="input-group input-group-sm">
                                 <input type="number" class="form-control custom-number-input"
-                                    placeholder="Enter  mobile no" id="mobile" maxlength="10" size="10"
-                                    formControlName="mobile"
-                                    [class.is-invalid]="f['mobile'].invalid && (f['mobile'].dirty || f['mobile'].touched)">
+                                placeholder="Enter mobile no" id="mobile"
+                                formControlName="mobile"
+                                (input)="onMobileInput($event)"
+                                [class.is-invalid]="f['mobile'].invalid && (f['mobile'].dirty || f['mobile'].touched)">
+                         
                                 <div *ngIf="f['mobile'].invalid && (f['mobile'].dirty || f['mobile'].touched)"
                                     class="invalid-feedback">
                                     <div *ngIf="f['mobile'].errors?.['required']">

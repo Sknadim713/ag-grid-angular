@@ -106,43 +106,55 @@ export class PracticalComponent implements OnInit {
       country: ['', Validators.required],
       state: ['', Validators.required],
       city: ['', Validators.required],
-      mobile: ['', [Validators.required, Validators.pattern('^[0-9]*$'), Validators.minLength(10), Validators.maxLength(10)]],
+      mobile: ['', [Validators.required, Validators.pattern('^[0-9]{10}$')]], 
       email: ['', [Validators.required, Validators.email]],
       currency: ['', Validators.required],
       latitude: [''],
       // contact person
       cname: ['', Validators.required],
-      cmobile: ['', [Validators.required, Validators.pattern('^[0-9]*$'), Validators.minLength(10), Validators.maxLength(10)]],
+      cmobile: ['', [Validators.required, Validators.pattern('^[0-9]{10}$')]], 
       cemail: ['', [Validators.required, Validators.email]],
       department: [''],
       designation: [''],
       file: [''],
       id: [this.createid()]
-
     });
+}
 
+onMobileInput(event: Event) {
+  const inputElement = event.target as HTMLInputElement;
+  const mobileValue = inputElement.value;
+  if (mobileValue.length > 10) {
+    inputElement.value = mobileValue.slice(0, 10); 
   }
+}
+
   onDelete(data: any) {
     const idToDelete = data.id;
     // alert(idToDelete);
-    let deleted = false;
-    const indexInClient = this.Client.findIndex((item: { id: any; }) => item.id === idToDelete);
-    if (indexInClient !== -1) {
-      this.Client.splice(indexInClient, 1);
-      deleted = true;
+    if(confirm("if want delete realy")){
+      let deleted = false;
+      const indexInClient = this.Client.findIndex((item: { id: any; }) => item.id === idToDelete);
+      if (indexInClient !== -1) {
+        this.Client.splice(indexInClient, 1);
+        deleted = true;
+      }
+      const indexInArray = this.array.findIndex((item: { id: any; }) => item.id === idToDelete);
+      if (indexInArray !== -1) {
+        this.array.splice(indexInArray, 1);
+        deleted = true;
+      }
+      if (deleted) {
+        this.ClientSubject.next([...this.Client, ...this.array]);
+        this.cdr.detectChanges();
+        console.log(idToDelete, "deleted.");
+      } else {
+        console.error(idToDelete, "not found.");
+      }
     }
-    const indexInArray = this.array.findIndex((item: { id: any; }) => item.id === idToDelete);
-    if (indexInArray !== -1) {
-      this.array.splice(indexInArray, 1);
-      deleted = true;
-    }
-    if (deleted) {
-      this.ClientSubject.next([...this.Client, ...this.array]);
-      this.cdr.detectChanges();
-      console.log(idToDelete, "deleted.");
-    } else {
-      console.error(idToDelete, "not found.");
-    }
+    console.log("Cancell");
+    
+   
   }
 
 
@@ -230,7 +242,7 @@ export class PracticalComponent implements OnInit {
   Onedit(data: any) {
     console.log("Data:", data);
     this.setControls(data);
-    alert(data.id);
+    // alert(data.id);
   }
 
 
